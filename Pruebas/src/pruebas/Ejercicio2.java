@@ -8,7 +8,7 @@ public class Ejercicio2 {
 
 class Capa{
 	
-	Capa siguiente = null;
+	Capa siguiente;
 	int posicion;
 	int size;
 	public A a = new A();
@@ -18,13 +18,19 @@ class Capa{
 	public A get(Filtro f,Reductor r) {
 		Iterator<A> itr = objetos.iterator();
 		A menor = null;
-		while(itr.hasNext()) {
-			A aux = itr.next();
-			A aux1 = itr.next();
-			if(f.filtrar(aux) && aux!=null && aux1!=null) {
-				menor = r.reducir(aux,aux1);
+		Capa capaAux;
+		while(siguiente != null){
+			while(itr.hasNext()) {
+				A aux = itr.next();
+				A aux1 = itr.next();
+				if(f.filtrar(aux) && aux!=null && aux1!=null) {
+					menor = r.reducir(aux,aux1);
+				}
 			}
+			capaAux = this.siguiente;
+			itr = capaAux.objetos.iterator();
 		}
+		
 		return menor;
 	}
 	

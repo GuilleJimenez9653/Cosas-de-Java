@@ -18,8 +18,8 @@ class Capa{
 	public A get(Filtro f,Reductor r) {
 		Iterator<A> itr = objetos.iterator();
 		A menor = null;
-		Capa capaAux;
-		while(siguiente != null){
+		Capa capaAux = this;
+		while(capaAux.siguiente != null){
 			while(itr.hasNext()) {
 				A aux = itr.next();
 				A aux1 = itr.next();
@@ -27,7 +27,7 @@ class Capa{
 					menor = r.reducir(aux,aux1);
 				}
 			}
-			capaAux = this.siguiente;
+			capaAux =capaAux.siguiente;
 			itr = capaAux.objetos.iterator();
 		}
 		

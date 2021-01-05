@@ -82,6 +82,34 @@ class ArbolBinario{
 		}
 	}
 	
+	public boolean estaVacio() {
+		return raiz == null;
+	}
+	
+	public void inOrden(Nodo r) {
+		if (r != null) {
+			inOrden(r.getHijoIzquierdo());
+			System.out.println(r.getDato());
+			inOrden(r.getHijoDerecho());
+		}
+	}
+	
+	public void preOrden(Nodo r) {
+		if (r != null) {
+			System.out.println(r.getDato());
+			preOrden(r.getHijoIzquierdo());
+			preOrden(r.getHijoDerecho());
+		}
+	}
+	
+	public void postOrden(Nodo r) {
+		if (r != null) {
+			postOrden(r.getHijoIzquierdo());
+			postOrden(r.getHijoDerecho());
+			System.out.println(r.getDato());
+		}
+	}
+	
 }
 
 

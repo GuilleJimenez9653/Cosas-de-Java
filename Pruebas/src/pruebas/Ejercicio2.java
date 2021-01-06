@@ -18,7 +18,7 @@ class Capa{
 	ArrayList<A> objetos = new ArrayList<A>();
 	
 	//Funcion a resolver
-	public A get(Filtro f,Reductor r) {
+	/*public A get(Filtro f,Reductor r) {
 		Iterator<A> itr = objetos.iterator();
 		A menor = null;
 		Capa capaAux = this;
@@ -35,7 +35,30 @@ class Capa{
 		}
 		
 		return menor;
-	}
+	}*/
+	
+	//Funcion a resolver
+		public A get(Filtro f,Reductor r) {
+			A menor = null;
+			Capa capaAux = this;
+			while(capaAux.siguiente != null){
+				for(int i=0;i<objetos.size();i++) {
+					if(i==0) {
+						menor = objetos.get(i);
+					}else {
+						if(f.filtrar(objetos.get(i)) && f.filtrar(objetos.get(i+1)) ) {
+							if(menor.getEnergia() > r.reducir(objetos.get(i),objetos.get(i+1)).getEnergia()) {
+								menor = r.reducir(objetos.get(i),objetos.get(i+1));
+							}
+						}
+					}
+				}
+				capaAux =capaAux.siguiente;
+				
+			}
+			
+			return menor;
+		}
 	
 	public A get(int posicion) {
 		A a1 = null;

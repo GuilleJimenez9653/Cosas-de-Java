@@ -40,7 +40,7 @@ class Restriccion{
 	ArrayList<Casilla_ej_4> casillas = new ArrayList<Casilla_ej_4>();
 	
 	public boolean seCumple() {
-		int suma,cont,resultado = 0;
+		int cont,resultado = 0;
 		cont = 0;
 		suma = 0;
 		for(Casilla_ej_4 c: casillas) {

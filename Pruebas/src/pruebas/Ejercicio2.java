@@ -40,23 +40,18 @@ class Capa{
 	//Funcion a resolver
 		public A get(Filtro f,Reductor r) {
 			A menor = null;
-			Capa capaAux = this;
-			while(capaAux.siguiente != null){
-				for(int i=0;i<objetos.size();i++) {
-					if(i==0) {
-						menor = objetos.get(i);
-					}else {
-						if(f.filtrar(objetos.get(i)) && f.filtrar(objetos.get(i+1)) ) {
-							if(menor.getEnergia() > r.reducir(objetos.get(i),objetos.get(i+1)).getEnergia()) {
-								menor = r.reducir(objetos.get(i),objetos.get(i+1));
-							}
+			for(int i=0;i<objetos.size();i++) {
+				if(i==0) {
+					menor = objetos.get(i);
+				}else {
+					if(f.filtrar(objetos.get(i)) && f.filtrar(objetos.get(i+1)) ) {
+						if(menor.getEnergia() > r.reducir(objetos.get(i),objetos.get(i+1)).getEnergia()) {
+							menor = r.reducir(objetos.get(i),objetos.get(i+1));
 						}
 					}
-				}
-				capaAux =capaAux.siguiente;
-				
+				}		
 			}
-			
+			siguiente.get(f, r);
 			return menor;
 		}
 	

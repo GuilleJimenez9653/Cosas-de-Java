@@ -12,12 +12,12 @@ public class Arboles {
 
 class Nodo{
 	
-	private int dato, valor;
+	private int dato;
 	private Nodo hijoIzquierdo, hijoDerecho;
+	Nodo raiz;
 	
-	public Nodo(int dato, int valor) {
+	public Nodo(int dato) {
 		this.dato = dato;
-		this.valor = valor;
 		this.setHijoDerecho(null);
 		this.setHijoIzquierdo(null);
 	}
@@ -27,12 +27,7 @@ class Nodo{
 	public void setDato(int dato) {
 		this.dato = dato;
 	}
-	public int getValor() {
-		return valor;
-	}
-	public void setValor(int valor) {
-		this.valor = valor;
-	}
+	
 	public Nodo getHijoIzquierdo() {
 		return hijoIzquierdo;
 	}
@@ -46,18 +41,8 @@ class Nodo{
 		this.hijoDerecho = hijoDerecho;
 	}
 	
-}
-
-class ArbolBinario{
-	
-	Nodo raiz;
-
-	public ArbolBinario() {
-		raiz = null;
-	}
-	
-	public void agregarNodo(int dato, int valor) {
-		Nodo nuevo = new Nodo(dato,valor);
+	public void insertar(int dato) {
+		Nodo nuevo = new Nodo(dato);
 		if(raiz == null) {
 			raiz = nuevo;
 		}else {
@@ -81,6 +66,18 @@ class ArbolBinario{
 			}
 		}
 	}
+	
+}
+
+class ArbolBinario{
+	
+	Nodo raiz;
+
+	public ArbolBinario() {
+		raiz = null;
+	}
+	
+	
 	
 	public boolean estaVacio() {
 		return raiz == null;

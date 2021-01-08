@@ -16,40 +16,32 @@ class Capa{
 	int size;
 	public A a = new A();
 	ArrayList<A> objetos = new ArrayList<A>();
-
-	//Funcion a resolver
-	/*public A get(Filtro f,Reductor r) {
-		Iterator<A> itr = objetos.iterator();
-		A menor = null;
-		Capa capaAux = this;
-		while(capaAux.siguiente != null){
-			while(itr.hasNext()) {
-				A aux = itr.next();
-				A aux1 = itr.next();
-				if(f.filtrar(aux) && aux!=null && aux1!=null) {
-					menor = r.reducir(aux,aux1);
-				}
-			}
-			capaAux =capaAux.siguiente;
-			itr = capaAux.objetos.iterator();
-		}
-		
-		return menor;
-	}*/
 	
 	//Funcion a resolver
 		public A get(Filtro f,Reductor r) {
 			A menor = null;
+			int cont;
 			Capa capa_aux = this;
 			while(capa_aux != null) {
 				for(int i=0;i<capa_aux.objetos.size();i++) {
 					if(f.filtrar(capa_aux.objetos.get(i)) && menor == null ) {
 						menor = capa_aux.objetos.get(i);
-					}else {
+					}else { 
 						if(f.filtrar(capa_aux.objetos.get(i)) && f.filtrar(capa_aux.objetos.get(i+1)) ) {
 							if(menor.getEnergia() > r.reducir(capa_aux.objetos.get(i),capa_aux.objetos.get(i+1)).getEnergia()) {
 								menor = r.reducir(capa_aux.objetos.get(i),capa_aux.objetos.get(i+1));
 							}
+						}else if(f.filtrar(capa_aux.objetos.get(i+1))){
+							cont = 1;
+							while(!f.filtrar(capa_aux.objetos.get(i+cont)) && (i+cont)<capa_aux.objetos.size()){
+								cont += 1;
+							}
+							if(f.filtrar(capa_aux.objetos.get(i+cont))) {
+								if(menor.getEnergia() > r.reducir(capa_aux.objetos.get(i),capa_aux.objetos.get(i+1)).getEnergia()) {
+									menor = r.reducir(capa_aux.objetos.get(i),capa_aux.objetos.get(i+1));
+								}
+							}
+							i += cont;	
 						}
 					}		
 				}

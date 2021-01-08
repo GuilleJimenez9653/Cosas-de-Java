@@ -33,13 +33,7 @@ class Componente{
 		int cont = 0;
 		Componente componente_aux = this;
 		while(componente_aux != null) {
-			Subcomponente subcomponente_aux = componente_aux.getSubcomponentes();
-			while(subcomponente_aux != null) {
-				if(edad >= subcomponente_aux.getEdad()) {
-					cont += 1;
-				}
-				subcomponente_aux = subcomponente_aux.getSiguiente();
-			}
+			cont += componente_aux.getSubcomponentes().contar(edad);
 			componente_aux = componente_aux.getSiguiente();
 		}
 		return cont;

@@ -31,16 +31,16 @@ class Componente{
 	
 	public int contar(int edad) {
 		int cont = 0;
-		Componente comp_aux = this;
-		while(comp_aux != null) {
-			Subcomponente sub_aux = comp_aux.getSubcomponentes();
-			while(sub_aux != null) {
-				if(edad >= sub_aux.getEdad()) {
+		Componente componente_aux = this;
+		while(componente_aux != null) {
+			Subcomponente subcomponente_aux = componente_aux.getSubcomponentes();
+			while(subcomponente_aux != null) {
+				if(edad >= subcomponente_aux.getEdad()) {
 					cont += 1;
 				}
-				sub_aux = sub_aux.getSiguiente();
+				subcomponente_aux = subcomponente_aux.getSiguiente();
 			}
-			comp_aux = comp_aux.getSiguiente();
+			componente_aux = componente_aux.getSiguiente();
 		}
 		return cont;
 	}
@@ -65,12 +65,12 @@ class Subcomponente{
 	}
 	public int contar(int edad) {
 		int cont = 0;
-		Subcomponente subcomp_aux = this;
-		while(subcomp_aux != null) {
-			if(edad >= subcomp_aux.getEdad()) {
+		Subcomponente subcomponente_aux = this;
+		while(subcomponente_aux != null) {
+			if(edad >= subcomponente_aux.getEdad()) { 
 				cont += 1;
 			}
-			subcomp_aux = subcomp_aux.getSiguiente();
+			subcomponente_aux = subcomponente_aux.getSiguiente();
 		}
 		return cont;
 	}

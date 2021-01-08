@@ -16,7 +16,7 @@ class Capa{
 	int size;
 	public A a = new A();
 	ArrayList<A> objetos = new ArrayList<A>();
-	
+
 	//Funcion a resolver
 	/*public A get(Filtro f,Reductor r) {
 		Iterator<A> itr = objetos.iterator();
@@ -51,7 +51,11 @@ class Capa{
 					}
 				}		
 			}
-			siguiente.get(f, r);
+			if(siguiente != null) {
+				siguiente.get(f, r);
+			}else {
+				return menor;
+			}
 			return menor;
 		}
 	
